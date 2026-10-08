@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify OTP - OTP Auth</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 320px; }
+        h2 { text-align: center; color: #333; }
+        p { text-align: center; color: #666; font-size: 14px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #666; }
+        input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; text-align: center; font-size: 18px; letter-spacing: 2px; }
+        button { width: 100%; padding: 10px; background: #28a745; border: none; color: white; border-radius: 4px; font-size: 16px; cursor: pointer; }
+        button:hover { background: #218838; }
+        .flash { color: red; font-size: 14px; text-align: center; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Verify OTP</h2>
+        <p>Enter the 6-digit code sent to your email.</p>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash">{{ messages[0] }}</div>
+            {% endif %}
+        {% endwith %}
+        <form method="POST">
+            <div class="form-group">
+                <input type="text" name="otp" maxlength="6" required placeholder="------">
+            </div>
+            <button type="submit">Verify & Login</button>
+        </form>
+    </div>
+</body>
+</html>
